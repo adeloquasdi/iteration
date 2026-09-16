@@ -45,10 +45,10 @@ gpa_scale = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
 # Function definition statement (10 lines): calculate_gpas in global
 # Callable, returns dict[str, float]
 # grades as local of type tuple[str, str, str]
-def calculate_gpas(grades: tuple[str, str, str]) -> dict[str, float]:
+def calculate_gpas(grades: list[tuple[str, str, str]]) -> dict[str, float]:
     gpa = {} # assignment gpa to locals, dictionary
     for course, name, grade in grades: # for statement
-        if name not in gpa: # if statment
+        if name not in gpa: # if statement
             gpa[name] = [gpa_scale[grade]] # [4.0],
         else: #else
             gpa[name] = gpa[name] + [gpa_scale[grade]]

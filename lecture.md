@@ -53,9 +53,13 @@ For each of these problems:
 3. Sketch out (in English) how you'd solve these problems,
    i.e. what loop are you using
 
+
+# Useful Functions
+
 ```example
-for index, letter in enumerate('mississippi'):
-    print(index, letter)
+>>> text = 'mississippi'
+>>> for index, letter in enumerate(text):
+...     print(index, letter)
     
 0 m
 1 i
@@ -68,15 +72,15 @@ for index, letter in enumerate('mississippi'):
 8 p
 9 p
 10 i
-text = 'mississippi'
-text
-'mississippi'
-text[0]
+```
+
+```example
+>>> text[0]
 'm'
-text[1:]
+>>> text[1:]
 'ississippi'
-for x, y in zip(text, text[1:]):
-    print(x, y)
+>>> for x, y in zip(text, text[1:]):
+...     print(x, y)
     
 m i
 i s
@@ -88,26 +92,29 @@ s i
 i p
 p p
 p i
-count = 0
-for x, y in zip(text, text[1:]):
-    if x == y:
-        count += 1
+>>> count = 0
+>>> for x, y in zip(text, text[1:]):
+...     if x == y:
+...         count += 1
     
-count
+>>> count
 3
-text
+>>> text
 'mississippi'
-lambda param: str(param)
+```
+
+```example
+>>> lambda param: str(param)
 <function <lambda> at 0x0000027DC1A04D50>
-x = lambda param: str(param)
-x(1)
+>>> x = lambda param: str(param)
+>>> x(1)
 '1'
-hand = ('K', 'Q', 'A')
-face_cards = {'J': 11, 'Q': 12, 'K': 13, 'A': 14}
-face_cards['A']
+>>> hand = ('K', 'Q', 'A')
+>>> face_cards = {'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+>>> face_cards['A']
 14
-sorted(hand)
+>>> sorted(hand)
 ['A', 'K', 'Q']
-sorted(hand, key=lambda card: face_cards[card])
+>>> sorted(hand, key=lambda card: face_cards[card])
 ['Q', 'K', 'A']
 ```

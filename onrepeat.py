@@ -25,6 +25,7 @@ students = [
 ]
 
 # Grades are records of (Course, Student Name, Letter Grade)
+# Assignment statement: grades in global, list[tuples[str, str, str]]
 grades = [
     ('DS1043', 'Alice', 'A'),
     ('DS1043', 'Bob', 'A'),
@@ -38,15 +39,29 @@ grades = [
     ('CS2023', 'Eve', 'B')
 ]
 
+# Assignment statement: gpa_scale in global, dict[str, float]
 gpa_scale = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
 
+# Function definition statement (10 lines): calculate_gpas in global
+# Callable, returns dict[str, float]
+# grades as local of type tuple[str, str, str]
 def calculate_gpas(grades: tuple[str, str, str]) -> dict[str, float]:
-    gpa = {}
-    for course, name, grade in grades:
-        if name not in gpa:
-            gpa[name] = [gpa_scale[grade]]
-        else:
+    gpa = {} # assignment gpa to locals, dictionary
+    for course, name, grade in grades: # for statement
+        if name not in gpa: # if statment
+            gpa[name] = [gpa_scale[grade]] # [4.0],
+        else: #else
             gpa[name] = gpa[name] + [gpa_scale[grade]]
     for student in gpa:
         gpa[student] = sum(gpa[student]) / len(gpa[student])
     return gpa
+
+# Function call
+calculate_gpas(grades)
+
+# locals
+# grades -> see above
+# gpa -> dict {'Alice': [4.0, 4.0], 'Bob': [4.0], 'Charlie': [3.0]}
+# course -> str 'DS1043' 'DS1043' 'DS1043'
+# name -> str   'Alice'  'Bob'    'Charlie'
+# grade -> str  'A'      'A'      'B'

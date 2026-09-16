@@ -15,4 +15,38 @@ def collatz(n: int) -> list[int]:
             n = n * 3 + 1
     return nums + [n]
 
+# Students are records of (Student Name, Birth Year, Height in Inches)
+students = [
+    ('Alice', 2001, 59),
+    ('Bob', 2004, 67),
+    ('Charlie', 2005, 71),
+    ('Daisy', 2005, 67),
+    ('Eve', 2004, 63)
+]
 
+# Grades are records of (Course, Student Name, Letter Grade)
+grades = [
+    ('DS1043', 'Alice', 'A'),
+    ('DS1043', 'Bob', 'A'),
+    ('DS1043', 'Charlie', 'B'),
+    ('DS1043', 'Daisy', 'B'),
+    ('DS1043', 'Eve', 'C'),
+    ('CS2023', 'Alice', 'A'),
+    ('CS2023', 'Bob', 'B'),
+    ('CS2023', 'Charlie', 'C'),
+    ('CS2023', 'Daisy', 'A'),
+    ('CS2023', 'Eve', 'B')
+]
+
+gpa_scale = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
+
+def calculate_gpas(grades: tuple[str, str, str]) -> dict[str, float]:
+    gpa = {}
+    for course, name, grade in grades:
+        if name not in gpa:
+            gpa[name] = [gpa_scale[grade]]
+        else:
+            gpa[name] = gpa[name] + [gpa_scale[grade]]
+    for student in gpa:
+        gpa[student] = sum(gpa[student]) / len(gpa[student])
+    return gpa

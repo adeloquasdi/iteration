@@ -139,25 +139,80 @@ tokenize('Be yourself, everyone else is taken.')
 ```
 
 1.  `def tokenize(text, delimiters=' .,!?;:/"'):`
+    - Function Definition Statement (header line 1, body lines 2-12)
+    - def <keyword>, tokenize <identifier>
+    - Parameters: text <positional parameter>, delimiters <keyword parameter>
 2.  `    token = ''`
+    - Assignment Statement
+    - token <identifier> = <keyword> '' <literal value>
 3.  `    tokens = []`
+    - Assignment Statement
+    - tokens <identifier> = <keyword> [] <literal value>
 4.  `    for character in text:`
+    - For Loop Statement (header line 4, body lines 5-9)
+    - for <keyword> character <identifier> in <keyword> text <identifier>
 5.  `        if character in delimiters:`
+    - If Statement
+    - if <keyword> character <identifier> in <operator> delimiters <identifier>
 6.  `            tokens = tokens + [token]`
+    - Assignment Statement
+    - tokens <identifier> = <keyword> tokens <identifier> + <operator> [token]
+    - `[token]` is a new list containing the value of `token`
 7.  `            token = ''`
+    - Assignment Statement
 8.  `        else:`
+    - Else Statment (header line 8, body line 9)
 9.  `            token = token + character`
+    - Assignment Statement
 10. `    if len(token) > 0:`
+    - If Statement (header line 10, body line 11)
 11. `        tokens = tokens + [token]`
+    - Assignment Statement
 12. `    return tokens`
+    - Return statement
+    - return <keyword> tokens <identifier>
 13. 
-14. `tokenize('Be yourself, everyone else is taken.')`
+14. `tokenize('Be yourself!')`
+    - Function call
+    - tokenize <identifier, type Callable>
+    - Argument list: 'Be yourself!' <literal value>
 
 
-| Local Name | Type | Values |
-| ---------- | ---- | ------ |
-|            |      |        |
-|            |      |        |
-|            |      |        |
-|            |      |        |
-|            |      |        |
+| Local Name | Type | Values                                                                           |
+|------------|------|----------------------------------------------------------------------------------|
+| text       | str  | 'Be yourself!'                                                                   |
+| delimiters | str  | ' .,!?;:/"'                                                                      |
+| token      | str  | 'B', 'Be', '', 'y', 'yo', 'you', 'your', 'yours', 'yourse', 'yoursel', 'yourself' |
+| tokens     | list | [], ['Be'], ['Be', 'yourself']                                                   |
+| character  | str  | 'B','e', ' ', 'y', 'o', 'u', 'r', 's', 'e', 'l', 'f', '!'                        |
+
+# Star Operator
+
+Not multiplication like `2 * 3`
+
+```example
+>>> student_record = ('Alice', 100001, 3.75)
+>>> name, *rest = student_record
+>>> name
+'Alice'
+>>> rest
+[100001, 3.75]
+>>> *rest, gpa = student_record
+>>> name, *rest, gpa = student_record
+>>> def some_fucntion(name, id, gpa):
+...     print(name, id, gpa)
+...
+>>> some_function(*student_record)
+Alice 100001 3.75
+```
+```python
+for name, *_ in student_records:
+```
+```python
+def some_function(*args, **kwargs):
+    for arg in args:
+        print(arg)
+    print(kwargs['name'])
+
+some_function(1, 2, name='Alice')
+```

@@ -140,23 +140,23 @@ tokenize('Be yourself, everyone else is taken.')
 
 1.  `def tokenize(text, delimiters=' .,!?;:/"'):`
     - Function Definition Statement (header line 1, body lines 2-12)
-    - def <keyword>, tokenize <identifier>
-    - Parameters: text <positional parameter>, delimiters <keyword parameter>
+    - def (keyword), tokenize (identifier)
+    - Parameters: text (positional parameter), delimiters (keyword parameter)
 2.  `    token = ''`
     - Assignment Statement
-    - token <identifier> = <keyword> '' <literal value>
+    - token (identifier) = (keyword) '' (literal value)
 3.  `    tokens = []`
     - Assignment Statement
-    - tokens <identifier> = <keyword> [] <literal value>
+    - tokens (identifier) = (keyword) [] (literal value)
 4.  `    for character in text:`
     - For Loop Statement (header line 4, body lines 5-9)
-    - for <keyword> character <identifier> in <keyword> text <identifier>
+    - for (keyword) character (identifier) in (keyword) text (identifier)
 5.  `        if character in delimiters:`
     - If Statement
-    - if <keyword> character <identifier> in <operator> delimiters <identifier>
+    - if (keyword) character (identifier) in (operator) delimiters (identifier)
 6.  `            tokens = tokens + [token]`
     - Assignment Statement
-    - tokens <identifier> = <keyword> tokens <identifier> + <operator> [token]
+    - tokens (identifier) = (keyword) tokens (identifier) + (operator) [token]
     - `[token]` is a new list containing the value of `token`
 7.  `            token = ''`
     - Assignment Statement
@@ -170,12 +170,12 @@ tokenize('Be yourself, everyone else is taken.')
     - Assignment Statement
 12. `    return tokens`
     - Return statement
-    - return <keyword> tokens <identifier>
+    - return (keyword) tokens (identifier)
 13. 
 14. `tokenize('Be yourself!')`
     - Function call
-    - tokenize <identifier, type Callable>
-    - Argument list: 'Be yourself!' <literal value>
+    - tokenize (identifier, type Callable)
+    - Argument list: 'Be yourself!' (literal value)
 
 
 | Local Name | Type | Values                                                                           |
@@ -190,6 +190,7 @@ tokenize('Be yourself, everyone else is taken.')
 
 Not multiplication like `2 * 3`
 
+We can "pop" the first, last, or first and last elements off of a sequence
 ```example
 >>> student_record = ('Alice', 100001, 3.75)
 >>> name, *rest = student_record
@@ -199,20 +200,33 @@ Not multiplication like `2 * 3`
 [100001, 3.75]
 >>> *rest, gpa = student_record
 >>> name, *rest, gpa = student_record
+```
+
+We can "unpack" a sequence to len(sequence) values for passing to a function
+```example
 >>> def some_fucntion(name, id, gpa):
 ...     print(name, id, gpa)
 ...
 >>> some_function(*student_record)
 Alice 100001 3.75
 ```
+
+If we don't care about some value, we call it _ by convention
 ```python
 for name, *_ in student_records:
+    print(name)
 ```
-```python
-def some_function(*args, **kwargs):
-    for arg in args:
-        print(arg)
-    print(kwargs['name'])
 
-some_function(1, 2, name='Alice')
+If we want to accept any number of positional arguments, we use * then an identifier as a parameter.
+If we want to accept any number of keyword arguments, we use ** then an identifier as a parameter.
+```example
+>>> def some_function(*args, **kwargs):  # very common names in Python's standard libraries
+...     for arg in args:
+...         print(arg)
+...     print('Keyword name = ', kwargs['name'])
+...
+>>> some_function(1, 2, name='Alice')
+1
+2
+Keyword name = Alice
 ```

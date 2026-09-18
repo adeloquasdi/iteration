@@ -118,3 +118,46 @@ p i
 >>> sorted(hand, key=lambda card: face_cards[card])
 ['Q', 'K', 'A']
 ```
+
+# Reading Code Example
+
+```python
+def tokenize(text, delimiters=' .,!?;:/"'):
+    token = ''
+    tokens = []
+    for character in text:
+        if character in delimiters:
+            tokens = tokens + [token]
+            token = ''
+        else:
+            token = token + character
+    if len(token) > 0:
+        tokens = tokens + [token]
+    return tokens
+
+tokenize('Be yourself, everyone else is taken.')
+```
+
+1.  `def tokenize(text, delimiters=' .,!?;:/"'):`
+2.  `    token = ''`
+3.  `    tokens = []`
+4.  `    for character in text:`
+5.  `        if character in delimiters:`
+6.  `            tokens = tokens + [token]`
+7.  `            token = ''`
+8.  `        else:`
+9.  `            token = token + character`
+10. `    if len(token) > 0:`
+11. `        tokens = tokens + [token]`
+12. `    return tokens`
+13. 
+14. `tokenize('Be yourself, everyone else is taken.')`
+
+
+| Local Name | Type | Values |
+| ---------- | ---- | ------ |
+|            |      |        |
+|            |      |        |
+|            |      |        |
+|            |      |        |
+|            |      |        |

@@ -230,3 +230,45 @@ If we want to accept any number of keyword arguments, we use ** then an identifi
 2
 Keyword name = Alice
 ```
+
+# Useful Functions, Implemented
+
+## Map
+```python
+def my_map(func, seq):
+    result = []
+    for element in seq:
+        result += [func(element)]
+    return result
+```
+
+## Filter
+```python
+def my_filter(func, seq):
+    result = []
+    for element in seq:
+        if func(element):
+            result += [element]
+    return result
+```
+
+
+## Reversed
+```python
+def my_reversed(seq):
+    result = []
+    rest = seq
+    while len(rest) > 0:
+        *rest, last = rest
+        result += [last]
+    return result
+```
+
+## Enumerate
+
+## Zip
+
+```python
+def transpose(*args):
+
+```

@@ -257,18 +257,35 @@ def my_filter(func, seq):
 ```python
 def my_reversed(seq):
     result = []
-    rest = seq
-    while len(rest) > 0:
-        *rest, last = rest
-        result += [last]
+    for index in range(len(seq) -1, -1, -1):
+        result += [seq[index]]
     return result
 ```
 
 ## Enumerate
 
+```python
+def my_enumerate(seq):
+    index = 0
+    result = []
+    for element in seq:
+        result += [(index, element)]
+        index += 1
+    return result
+```
+
 ## Zip
 
 ```python
 def transpose(*args):
-
+    stop = len(min(*args, key=len))
+    index = 0
+    result = []
+    while index < stop:
+        element = ()
+        for seq in args:
+            element += (seq[index],)
+        index += 1
+        result += [element]
+    return result
 ```
